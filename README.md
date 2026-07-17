@@ -12,7 +12,7 @@ org.alexisdieguez
 - paleta de colores personalizada
 - Estilo de boton personalizado: radius, font, size.
 -Estilo de pantalla, segun requisitos anteriores.
-    -Funcionalidades en base a lo visto en clase.
+-Funcionalidades en base a lo visto en clase.
 ## Enlace de video
   -(sugerido) DBS - grabar - microfono.
   -presente su calculadora funcionando; operaciones, operaciones extra.
