@@ -16,5 +16,5 @@ org.alexisdieguez
 ## Enlace de video
   -(sugerido) DBS - grabar - microfono.
   -presente su calculadora funcionando; operaciones, operaciones extra.
-  -presente la estructura de su código.
+  -presente la estructura de su código
   -copy paste
