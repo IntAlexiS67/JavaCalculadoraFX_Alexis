@@ -83,26 +83,6 @@ public class CalculadoraController {
         }
     }
 
-    // Lógica para borrar carácter por carácter (Botón C)
-    private void borrarUltimoCaracter() {
-        if (calculoTerminado) {
-            // Si el cálculo ya terminó, borrar limpia todo
-            opcion1 = "";
-            operador = "";
-            opcion2 = "";
-            calculoTerminado = false;
-        } else if (!opcion2.isEmpty()) {
-            // Borramos el último dígito del segundo operando
-            opcion2 = opcion2.substring(0, opcion2.length() - 1);
-        } else if (!operador.isEmpty()) {
-            // Si no hay segundo operando, borramos el operador
-            operador = "";
-        } else if (!opcion1.isEmpty()) {
-            // Si no hay operador, borramos el último dígito del primer operando
-            opcion1 = opcion1.substring(0, opcion1.length() - 1);
-        }
-    }
-
 
     // Métodos de operaciones matemáticas con soporte decimal (Double)
 
