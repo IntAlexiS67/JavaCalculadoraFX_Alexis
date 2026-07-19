@@ -40,34 +40,31 @@ public class CalculadoraView {
         cuadroBotones.setAlignment(Pos.CENTER);
 
         //  Configuración de Botones 
-        // -- Primera fila de botones 
+        // -- Botones de funciones especiales y limpiado
         Button btnClearNum = nuevoBoton("C");
-        Button btnPunto = nuevoBoton(".");
-        Button btnCero = nuevoBoton("0");
-        Button btnDivisor = nuevoBoton("/");
-
-        // -- Segunda fila de botones (7, 8, 9, *)
-        Button btnSiete = nuevoBoton("7");
-        Button btnOcho = nuevoBoton("8");
-        Button btnNueve = nuevoBoton("9");
-        Button btnMultiplicar = nuevoBoton("*");
-
-        //-- Tercera fila de botones (4, 5, 6, -)
-        Button btnCuatro = nuevoBoton("4");
-        Button btnCinco = nuevoBoton("5");
-        Button btnSeis = nuevoBoton("6");
-        Button btnMenos = nuevoBoton("-");
-
-        //-- Cuarta fila de botones (1, 2, 3, +)
-        Button btnUno = nuevoBoton("1");
-        Button btnDos = nuevoBoton("2");
-        Button btnTres = nuevoBoton("3");
-        Button btnMas = nuevoBoton("+");
-
-        //-- Quinta fila de botones
         Button btnPorcentaje = nuevoBoton("%");
         Button btnRaiz = nuevoBoton("√");
         Button btnPotencia = nuevoBoton("^");
+
+        // -- Botones numéricos y operadores básicos
+        Button btnSiete = nuevoBoton("7");
+        Button btnOcho = nuevoBoton("8");
+        Button btnNueve = nuevoBoton("9");
+        Button btnDivisor = nuevoBoton("/");
+
+        Button btnCuatro = nuevoBoton("4");
+        Button btnCinco = nuevoBoton("5");
+        Button btnSeis = nuevoBoton("6");
+        Button btnMultiplicar = nuevoBoton("*");
+
+        Button btnUno = nuevoBoton("1");
+        Button btnDos = nuevoBoton("2");
+        Button btnTres = nuevoBoton("3");
+        Button btnMenos = nuevoBoton("-");
+
+        Button btnPunto = nuevoBoton(".");
+        Button btnCero = nuevoBoton("0");
+        Button btnMas = nuevoBoton("+");
         Button btnIgual = nuevoBoton("=");
 
         // Fila 1

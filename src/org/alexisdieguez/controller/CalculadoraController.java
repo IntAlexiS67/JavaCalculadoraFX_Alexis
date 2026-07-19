@@ -27,6 +27,7 @@ public class CalculadoraController {
             case "-":
             case "*":
             case "/":
+            case "√":
                 // Si presionamos un operador tras un cálculo, el resultado anterior es el inicio
                 if (calculoTerminado) {
                     calculoTerminado = false;
@@ -38,7 +39,12 @@ public class CalculadoraController {
                 break;
 
             case "=":
-                if (!opcion1.isEmpty() && !opcion2.isEmpty() && !operador.isEmpty()) {
+                if (!opcion1.isEmpty() && operador.equals("√")) {
+                    opcion1 = calcular(opcion1, "", operador);
+                    operador = "";
+                    opcion2 = "";
+                    calculoTerminado = true;
+                } else if (!opcion1.isEmpty() && !opcion2.isEmpty() && !operador.isEmpty()) {
                     opcion1 = calcular(opcion1, opcion2, operador);
                     operador = "";
                     opcion2 = "";
@@ -94,6 +100,8 @@ public class CalculadoraController {
                 return resultadoMultiplicacion(num1, num2);
             case "/":
                 return resultadoDivision(num1, num2);
+            case "√":
+                return resultadoRadical(num1);
             default:
                 return num1;
         }
@@ -133,6 +141,14 @@ public class CalculadoraController {
         double datoUno = Double.parseDouble(numeroUno.trim());
         double datoDos = Double.parseDouble(numeroDos.trim());
         return formatearResultado(datoUno * datoDos);
+    }
+
+    private String resultadoRadical(String numeroUno) {
+        double datoUno = Double.parseDouble(numeroUno.trim());
+        if (datoUno < 0) {
+            return "Error";
+        }
+        return formatearResultado(Math.sqrt(datoUno));
     }
 
 }
