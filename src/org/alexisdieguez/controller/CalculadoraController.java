@@ -29,6 +29,7 @@ public class CalculadoraController {
             case "/":
             case "√":
             case "^":
+            case "%":
                 // Si presionamos un operador tras un cálculo, el resultado anterior es el inicio
                 if (calculoTerminado) {
                     calculoTerminado = false;
@@ -64,13 +65,21 @@ public class CalculadoraController {
                 break;
 
             case "=":
-                if (!opcion1.isEmpty() && operador.equals("√")) {
-                    opcion1 = calcular(opcion1, "", operador);
+                if (!opcion1.isEmpty() && !opcion2.isEmpty() && !operador.isEmpty()) {
+                    // Primero resolvemos las operaciones binarias normales (incluyendo 30 % 20)
+                    opcion1 = calcular(opcion1, opcion2, operador);
                     operador = "";
                     opcion2 = "";
                     calculoTerminado = true;
-                } else if (!opcion1.isEmpty() && !opcion2.isEmpty() && !operador.isEmpty()) {
-                    opcion1 = calcular(opcion1, opcion2, operador);
+                } else if (!opcion1.isEmpty() && operador.equals("√")) {
+                    opcion1 = resultadoRadical(opcion1);
+                    operador = "";
+                    opcion2 = "";
+                    calculoTerminado = true;
+                } else if (!opcion1.isEmpty() && operador.equals("%")) {
+                    // Si opcion2 está vacía, entonces sí hace el porcentaje directo (ej: 30 % = 0.3)
+                    double dato = Double.parseDouble(opcion1.trim());
+                    opcion1 = formatearResultado(dato / 100.0);
                     operador = "";
                     opcion2 = "";
                     calculoTerminado = true;
@@ -87,6 +96,8 @@ public class CalculadoraController {
                         opcion2 = "";
                         operador = "";
                     } else {
+                        // REGLA PARA EL PORCENTAJE: Si el operador actual es %, significa que el primer número 
+                        // actúa como la base y el segundo número ingresado es la tasa del porcentaje.
                         if (operador.isEmpty()) {
                             opcion1 += entrada;
                         } else {
@@ -125,10 +136,10 @@ public class CalculadoraController {
                 return resultadoMultiplicacion(num1, num2);
             case "/":
                 return resultadoDivision(num1, num2);
-            case "√":
-                return resultadoRadical(num1);
             case "^":
                 return resultadoPotencia(num1, num2);
+            case "%":
+                return resultadoProporcionPorcentaje(num1, num2);
             default:
                 return num1;
         }
@@ -182,6 +193,14 @@ public class CalculadoraController {
         double datoUno = Double.parseDouble(numeroUno.trim());
         double datoDos = Double.parseDouble(numeroDos.trim());
         return formatearResultado(Math.pow(datoUno, datoDos));
+    }
+
+    private String resultadoProporcionPorcentaje(String numeroUno, String numeroDos) {
+        double base = Double.parseDouble(numeroUno.trim());
+        double porcentaje = Double.parseDouble(numeroDos.trim());
+        // Calcula el porcentaje de la base (ej: 30 % 20 -> obtiene el 20% de 30)
+        double resultado = (base * porcentaje) / 100.0;
+        return formatearResultado(resultado);
     }
 
 }
