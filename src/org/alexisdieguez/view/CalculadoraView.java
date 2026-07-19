@@ -123,7 +123,7 @@ public class CalculadoraView {
             btn.setTranslateY(0);
         });
  
-        // Ahora sí funciona porque controlador ya está inicializado
+
         btn.setOnAction(e -> controlador.procesoDeEntrada(texto, pantalla));
         return btn;
     }
