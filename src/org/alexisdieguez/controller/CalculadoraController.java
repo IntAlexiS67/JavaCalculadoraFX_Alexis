@@ -38,6 +38,30 @@ public class CalculadoraController {
                 actualizarPantalla(pantalla);
                 break;
 
+            case ".":
+                if (calculoTerminado) {
+                    calculoTerminado = false;
+                    opcion1 = "0.";
+                    opcion2 = "";
+                    operador = "";
+                } else {
+                    if (operador.isEmpty()) {
+                        if (opcion1.isEmpty()) {
+                            opcion1 = "0.";
+                        } else if (!opcion1.contains(".")) {
+                            opcion1 += ".";
+                        }
+                    } else {
+                        if (opcion2.isEmpty()) {
+                            opcion2 = "0.";
+                        } else if (!opcion2.contains(".")) {
+                            opcion2 += ".";
+                        }
+                    }
+                }
+                actualizarPantalla(pantalla);
+                break;
+
             case "=":
                 if (!opcion1.isEmpty() && operador.equals("√")) {
                     opcion1 = calcular(opcion1, "", operador);
