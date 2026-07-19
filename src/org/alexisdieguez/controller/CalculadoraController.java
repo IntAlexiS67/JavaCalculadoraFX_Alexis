@@ -28,6 +28,7 @@ public class CalculadoraController {
             case "*":
             case "/":
             case "√":
+            case "^":
                 // Si presionamos un operador tras un cálculo, el resultado anterior es el inicio
                 if (calculoTerminado) {
                     calculoTerminado = false;
@@ -126,6 +127,8 @@ public class CalculadoraController {
                 return resultadoDivision(num1, num2);
             case "√":
                 return resultadoRadical(num1);
+            case "^":
+                return resultadoPotencia(num1, num2);
             default:
                 return num1;
         }
@@ -173,6 +176,12 @@ public class CalculadoraController {
             return "Error";
         }
         return formatearResultado(Math.sqrt(datoUno));
+    }
+
+    private String resultadoPotencia(String numeroUno, String numeroDos) {
+        double datoUno = Double.parseDouble(numeroUno.trim());
+        double datoDos = Double.parseDouble(numeroDos.trim());
+        return formatearResultado(Math.pow(datoUno, datoDos));
     }
 
 }
