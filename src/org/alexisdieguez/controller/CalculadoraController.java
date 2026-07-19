@@ -16,8 +16,8 @@ public class CalculadoraController {
     public void procesoDeEntrada(String entrada, Label pantalla) {
         switch (entrada) {
             case "C":
-                opcion1 = ""; 
-                operador = ""; 
+                opcion1 = "";
+                operador = "";
                 opcion2 = "";
                 calculoTerminado = false;
                 pantalla.setText("0");
@@ -52,7 +52,7 @@ public class CalculadoraController {
                 if (entrada.matches("[0-9]")) {
                     if (calculoTerminado) {
                         calculoTerminado = false;
-                        opcion1 = entrada; 
+                        opcion1 = entrada;
                         opcion2 = "";
                         operador = "";
                     } else {
@@ -83,16 +83,19 @@ public class CalculadoraController {
         }
     }
 
-
-    // Métodos de operaciones matemáticas con soporte decimal (Double)
-
+    // Métodos de operaciones matemáticas
     private String calcular(String num1, String num2, String op) {
         switch (op) {
-            case "+": return resultadoSuma(num1, num2);
-            case "-": return resultadoResta(num1, num2);
-            case "*": return resultadoMultiplicacion(num1, num2);
-            case "/": return resultadoDivision(num1, num2);
-            default: return num1;
+            case "+":
+                return resultadoSuma(num1, num2);
+            case "-":
+                return resultadoResta(num1, num2);
+            case "*":
+                return resultadoMultiplicacion(num1, num2);
+            case "/":
+                return resultadoDivision(num1, num2);
+            default:
+                return num1;
         }
     }
 
@@ -116,19 +119,20 @@ public class CalculadoraController {
         return formatearResultado(datoUno - datoDos);
     }
 
+    private String resultadoDivision(String numeroUno, String numeroDos) {
+        double datoUno = Double.parseDouble(numeroUno.trim());
+        double datoDos = Double.parseDouble(numeroDos.trim());
+
+        if (datoDos == 0) {
+            return "Error";
+        }
+        return formatearResultado(datoUno / datoDos);
+    }
+
     private String resultadoMultiplicacion(String numeroUno, String numeroDos) {
         double datoUno = Double.parseDouble(numeroUno.trim());
         double datoDos = Double.parseDouble(numeroDos.trim());
         return formatearResultado(datoUno * datoDos);
     }
 
-    private String resultadoDivision(String numeroUno, String numeroDos) {
-        double datoUno = Double.parseDouble(numeroUno.trim());
-        double datoDos = Double.parseDouble(numeroDos.trim());
-        
-        if (datoDos == 0) {
-            return "Error"; 
-        }
-        return formatearResultado(datoUno / datoDos);
-    }
 }
