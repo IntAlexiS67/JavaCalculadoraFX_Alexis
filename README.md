@@ -14,7 +14,7 @@ org.alexisdieguez
 -Estilo de pantalla, segun requisitos anteriores.
 -Funcionalidades en base a lo visto en clase.
 ## Enlace de video
-  -(sugerido) DBS - grabar - microfono.
+  -(sugerido) DBS - grabar - microfono. https://youtu.be/_kATEF2ioSg
   -presente su calculadora funcionando; operaciones, operaciones extra.
   -presente la estructura de su código
   -copy paste
